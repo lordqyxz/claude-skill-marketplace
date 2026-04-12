@@ -7,6 +7,7 @@ A community-driven marketplace for [Claude Code](https://claude.ai/code) skills.
 | Skill | Description | Author | Version |
 |-------|-------------|--------|---------|
 | [skill-creator](skills/skill-creator/SKILL.md) | Create new skills, modify and improve existing skills, and measure skill performance with iterative eval loops. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
+| [python-code](skills/python-code/SKILL.md) | Write, refactor, and debug Python code following Pythonic best practices. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
 
 ## Quick Install
 

@@ -12,6 +12,16 @@
       "path": "skills/skill-creator/SKILL.md",
       "tags": ["skill", "creation", "eval", "benchmark", "iteration"],
       "trigger": "Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy."
+    },
+    {
+      "name": "python-code",
+      "display_name": "Python Code",
+      "description": "Write, refactor, and debug Python code following Pythonic best practices from the official Python style guide, Effective Python, and Fluent Python.",
+      "version": "1.0.0",
+      "author": "lordqyxz",
+      "path": "skills/python-code/SKILL.md",
+      "tags": ["python", "code-quality", "refactoring", "debugging", "pythonic", "style"],
+      "trigger": "Use this skill whenever the user writes, reviews, refactors, or debugs Python code, asks about Python patterns, idioms, or style, mentions writing a script/module/package in Python, or requests code that is Pythonic. Applies to all Python 3.10+ code."
     }
   ]
 }

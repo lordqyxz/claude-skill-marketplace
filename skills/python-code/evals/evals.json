@@ -1,0 +1,47 @@
+{
+  "skill_name": "python-code",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "写一个 Python 函数，批量处理 CSV 文件，按指定列分组并计算每组的统计信息（均值、中位数、标准差），结果保存为新的 CSV",
+      "expected_output": "Pythonic 的 CSV 处理代码，使用 pathlib、dataclass 定义结构、context manager、生成器表达式、类型注解，I/O与逻辑分离，避免常见陷阱如可变默认参数",
+      "files": [],
+      "assertions": [
+        "Code uses pathlib.Path instead of os.path for file operations",
+        "All functions have type annotations on parameters and return types",
+        "Statistical result structure uses dataclass or NamedTuple",
+        "No mutable default arguments in function signatures",
+        "Business logic (computation) is separated from I/O (file read/write) into different functions",
+        "Functions are small and focused — each does one thing"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "写一个 Python 类来管理一个带过期时间的缓存，支持 get/set/delete 操作，并能在后台自动清理过期条目",
+      "expected_output": "使用 dataclass 实现缓存条目、容器 dunder 方法、asyncio 或 threading 异步清理、类型注解充分、解释设计权衡",
+      "files": [],
+      "assertions": [
+        "All public methods have type annotations",
+        "Cache class implements container dunder methods: __len__ or __contains__ or __getitem__",
+        "Background cleanup uses asyncio or threading pattern (not just naive loop)",
+        "Cache entry uses dataclass or NamedTuple for structure",
+        "Code explains the design tradeoffs (e.g., why async vs thread, why specific data structure)",
+        "Invalid input (e.g. negative TTL) raises ValueError with the actual value — never silently reinterprets"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "设计一个 Python 配置管理器，支持从 JSON 文件加载配置、按点号路径访问嵌套配置项（如 'database.host'）、环境变量覆盖、类型安全的配置验证，以及配置变更回调通知",
+      "expected_output": "使用 dataclass 定义配置结构、__getitem__ 支持 cfg['database.host']、环境变量覆盖有清晰的优先级文档、验证失败抛出包含具体值的错误信息、变更回调用观察者模式",
+      "files": [],
+      "assertions": [
+        "Configuration structure uses dataclass or TypedDict — not raw dict",
+        "Supports dot-path access to nested config (e.g. cfg.get('database.host'))",
+        "Environment variable override is documented with clear priority rules",
+        "Validation errors include both the key and the invalid value in the message",
+        "Code separates config loading (I/O) from config parsing/validation (logic)",
+        "Class implements __getitem__ or __contains__ for idiomatic Python access"
+      ]
+    }
+  ]
+}
