@@ -8,6 +8,9 @@ A community-driven marketplace for [Claude Code](https://claude.ai/code) skills.
 |-------|-------------|--------|---------|
 | [skill-creator](skills/skill-creator/SKILL.md) | Create new skills, modify and improve existing skills, and measure skill performance with iterative eval loops. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
 | [python-code](skills/python-code/SKILL.md) | Write, refactor, and debug Python code following Pythonic best practices. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
+| [vue3-sfc](skills/vue3-sfc/SKILL.md) | Vue 3 SFC development, modification, and review with Composition API + script setup. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
+| [python-developer](skills/python-developer/SKILL.md) | Structured Python development workflow with DDD and Clean Architecture. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
+| [effective-python](skills/effective-python/SKILL.md) | High-quality Python code following Effective Python best practices. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
 
 ## Quick Install
 

@@ -22,6 +22,36 @@
       "path": "skills/python-code/SKILL.md",
       "tags": ["python", "code-quality", "refactoring", "debugging", "pythonic", "style"],
       "trigger": "Use this skill whenever the user writes, reviews, refactors, or debugs Python code, asks about Python patterns, idioms, or style, mentions writing a script/module/package in Python, or requests code that is Pythonic. Applies to all Python 3.10+ code."
+    },
+    {
+      "name": "vue3-sfc",
+      "display_name": "Vue 3 SFC",
+      "description": "Vue 3 SFC development, modification, and review skill. Write and review .vue files following Vue 3 Composition API + script setup best practices.",
+      "version": "1.0.0",
+      "author": "lordqyxz",
+      "path": "skills/vue3-sfc/SKILL.md",
+      "tags": ["vue", "vue3", "sfc", "composition-api", "frontend", "component"],
+      "trigger": "Use when creating, modifying, reviewing, or refactoring .vue files, or any Vue 3 component development task."
+    },
+    {
+      "name": "python-developer",
+      "display_name": "Python Developer",
+      "description": "Structured Python development workflow: from requirements to delivery using DDD and Clean Architecture.",
+      "version": "1.0.0",
+      "author": "lordqyxz",
+      "path": "skills/python-developer/SKILL.md",
+      "tags": ["python", "ddd", "clean-architecture", "workflow", "requirements", "domain-modeling"],
+      "trigger": "Use when starting new feature development, implementing requirements with DDD/Clean Architecture, requirement analysis, domain modeling, or structured architecture-level refactoring."
+    },
+    {
+      "name": "effective-python",
+      "display_name": "Effective Python",
+      "description": "Generate high-quality Python code following Effective Python best practices. The code implementation layer for writing, reviewing, and refactoring Python code.",
+      "version": "1.0.0",
+      "author": "lordqyxz",
+      "path": "skills/effective-python/SKILL.md",
+      "tags": ["python", "effective-python", "best-practices", "code-generation", "refactoring", "type-hints"],
+      "trigger": "Use when writing, reviewing, or refactoring Python code at the code level, or when python-developer skill delegates to this skill for Phase 4 implementation."
     }
   ]
 }
