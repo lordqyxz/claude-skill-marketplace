@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Claude Skill Marketplace Registry",
+  "description": "Schema for the skill registry index",
+  "type": "object",
+  "required": ["version", "skills"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "description": "Registry format version (semver)"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date",
+      "description": "Last update date (YYYY-MM-DD)"
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "display_name", "description", "version", "author", "path"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Unique skill identifier (kebab-case)"
+          },
+          "display_name": {
+            "type": "string",
+            "description": "Human-readable name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Short description of what the skill does"
+          },
+          "version": {
+            "type": "string",
+            "description": "Skill version (semver)"
+          },
+          "author": {
+            "type": "string",
+            "description": "GitHub username of the skill author"
+          },
+          "path": {
+            "type": "string",
+            "description": "Relative path to SKILL.md from repo root"
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Searchable tags"
+          },
+          "trigger": {
+            "type": "string",
+            "description": "When this skill should trigger"
+          },
+          "homepage": {
+            "type": "string",
+            "description": "Optional URL to skill documentation"
+          },
+          "license": {
+            "type": "string",
+            "description": "SPDX license identifier"
+          }
+        }
+      }
+    }
+  }
+}
