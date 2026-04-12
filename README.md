@@ -1,4 +1,4 @@
-# Claude Skill Marketplace
+# Auto Dev Skills
 
 A community-driven marketplace for [Claude Code](https://claude.ai/code) skills. Browse, install, and share skills that supercharge your Claude Code experience.
 
@@ -6,46 +6,38 @@ A community-driven marketplace for [Claude Code](https://claude.ai/code) skills.
 
 | Skill | Description | Author | Version |
 |-------|-------------|--------|---------|
-| [skill-creator](skills/skill-creator/SKILL.md) | Create new skills, modify and improve existing skills, and measure skill performance with iterative eval loops. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
-| [python-code](skills/python-code/SKILL.md) | Write, refactor, and debug Python code. PEP 8 + Effective Python + Fluent Python best practices (merged with effective-python). | [@lordqyxz](https://github.com/lordqyxz) | 2.0.0 |
-| [vue3-sfc](skills/vue3-sfc/SKILL.md) | Vue 3 SFC development, modification, and review with Composition API + script setup. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
-| [python-developer](skills/python-developer/SKILL.md) | Structured Python development workflow with DDD and Clean Architecture. Delegates code implementation to python-code. | [@lordqyxz](https://github.com/lordqyxz) | 2.0.0 |
+| [skill-creator](auto_dev_skills/skills/skill-creator/SKILL.md) | Create new skills, modify and improve existing skills, and measure skill performance with iterative eval loops. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
+| [python-code](auto_dev_skills/skills/python-code/SKILL.md) | Write, refactor, and debug Python code. PEP 8 + Effective Python + Fluent Python best practices (merged with effective-python). | [@lordqyxz](https://github.com/lordqyxz) | 2.0.0 |
+| [vue3-sfc](auto_dev_skills/skills/vue3-sfc/SKILL.md) | Vue 3 SFC development, modification, and review with Composition API + script setup. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
+| [python-developer](auto_dev_skills/skills/python-developer/SKILL.md) | Structured Python development workflow with DDD and Clean Architecture. Delegates code implementation to python-code. | [@lordqyxz](https://github.com/lordqyxz) | 2.0.0 |
 
-## Quick Install
+## Install
 
-Install a skill directly from this marketplace:
-
-```bash
-# Clone the marketplace
-git clone https://github.com/lordqyxz/claude-skill-marketplace.git
-
-# Install a skill (e.g. skill-creator)
-./install.sh skill-creator
-```
-
-Or install a single skill without cloning:
+Install all skills via pip:
 
 ```bash
-# One-liner install
-curl -sL https://raw.githubusercontent.com/lordqyxz/claude-skill-marketplace/main/install.sh | bash -s -- skill-creator
+pip install auto-dev-skills && auto-dev-skills-install
 ```
 
-## Manual Install
-
-Copy the skill folder to your Claude skills directory:
-
-```bash
-cp -r skills/<skill-name> ~/.claude/skills/<skill-name>
-```
-
-Then enable it in your Claude Code settings (`~/.claude/settings.json`):
+Then enable skills in your Claude Code settings (`~/.claude/settings.json`):
 
 ```json
 {
   "skills": {
-    "<skill-name>": true
+    "skill-creator": true,
+    "python-code": true,
+    "python-developer": true,
+    "vue3-sfc": true
   }
 }
+```
+
+## Manual Install
+
+Copy a skill folder to your Claude skills directory:
+
+```bash
+cp -r auto_dev_skills/skills/<skill-name> ~/.claude/skills/<skill-name>
 ```
 
 ## Submit a Skill
@@ -53,7 +45,7 @@ Then enable it in your Claude Code settings (`~/.claude/settings.json`):
 Want to add your skill to the marketplace?
 
 1. Fork this repository
-2. Add your skill folder under `skills/`
+2. Add your skill folder under `auto_dev_skills/skills/`
 3. Add an entry to `registry.json`
 4. Submit a pull request
 

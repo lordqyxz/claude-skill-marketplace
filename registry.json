@@ -29,7 +29,7 @@
       "description": "Vue 3 SFC development, modification, and review skill. Write and review .vue files following Vue 3 Composition API + script setup best practices.",
       "version": "1.0.0",
       "author": "lordqyxz",
-      "path": "skills/vue3-sfc/SKILL.md",
+      "path": "auto_dev_skills/skills/vue3-sfc/SKILL.md",
       "tags": ["vue", "vue3", "sfc", "composition-api", "frontend", "component"],
       "trigger": "Use when creating, modifying, reviewing, or refactoring .vue files, or any Vue 3 component development task."
     },
