@@ -41,6 +41,7 @@ Small, focused functions with clear input/output contracts beat monolithic block
 - Use type annotations. They communicate intent, enable static analysis, and cost nothing at runtime. `def search(needle: str, haystack: list[str]) -> int:` is self-documenting.
 - **Separate I/O from logic.** Functions that mix file reads, network calls, or database queries with business logic are hard to test and brittle to refactor. Keep pure-data functions (take data in, return data out) separate from I/O adapters (read file, write result). This way the core logic can be tested without mocking filesystem or network, and the I/O layer can be swapped (e.g., from local files to S3) without touching business rules.
 - **Choose the right callable form.** Prefer closures for simple state capture (a counter, a callback with context) — they're lighter than a class. Use `@dataclass` or a class only when you need multiple methods or a complex interface. A `def make_counter(start=0)` returning an inner function is simpler than a `Counter` class with `__call__`.
+- **Keep function bodies under 30 lines** (excluding docstrings). Long functions indicate mixed responsibilities — extract helpers. Guidelines: ≤ 10 lines ideal, 10-20 acceptable, 20-30 borderline, > 30 refactor. Exceptions: dispatch tables, data-driven logic (match/case, dict of handlers).
 
 ### 4. Classes when you need state; functions when you don't
 
@@ -75,6 +76,18 @@ Follow PEP 8 as baseline, but go beyond it:
 - **String quotes**: Consistent within a file. Don't mix without reason.
 - **Trailing commas**: In multi-line collections, always. Makes diffs cleaner.
 - **Type annotations**: All function signatures. Use `from __future__ import annotations` for forward references.
+- **Naming conventions**:
+
+| Element | Convention | Example |
+|---------|------------|---------|
+| Variables | `snake_case` | `task_id`, `is_complete` |
+| Functions | `snake_case`, verb prefix | `get_tasks()`, `is_valid()` |
+| Classes | `PascalCase` | `TaskRepository`, `ValidationError` |
+| Constants | `UPPER_SNAKE` | `MAX_RETRIES`, `DEFAULT_TIMEOUT` |
+| Private | `_prefix` | `_internal_method()` |
+| Boolean | `is_`, `has_`, `can_` | `is_valid`, `has_permission` |
+
+- **Docstrings**: All public functions have Google-style docstrings.
 
 ## Patterns to Prefer
 
@@ -99,6 +112,12 @@ Follow PEP 8 as baseline, but go beyond it:
 | Lazy data pipeline | Generator function with `yield` | Loading all data into a list |
 | Operator overloading | `__add__` + `__radd__` + `__iadd__` | Only `__add__` (breaks `1 + obj`) |
 | Structural branching (3.10+) | `match`/`case` with destructuring | Deep `isinstance` + `if/elif` chains |
+| Parallel IO | `asyncio.gather` | Sequential awaits |
+| Blocking IO | `ThreadPoolExecutor` | asyncio for CPU-bound work |
+| High-precision timing | `time.perf_counter()` | `time.time()` |
+| Repeated computation | `@functools.lru_cache` | Manual memoization |
+| Many instances | `__slots__` | Regular `__dict__` class |
+| Context manager | `@contextmanager` + `with` | Manual `try/finally` cleanup |
 
 ## Common Pitfalls to Avoid
 
@@ -119,14 +138,32 @@ These come from *Effective Python* and *Fluent Python* — each one has burned r
 13. **Forgetting `nonlocal` in closures**: A nested function that assigns to an outer variable needs `nonlocal x` — without it, the assignment creates a local variable that shadows the outer one, and the outer variable is never updated.
 14. **`__slots__` blocks `weakref`**: Adding `__slots__` removes `__dict__` *and* `__weakref__` by default. If you need weak references to instances, explicitly add `__weakref__` to `__slots__`.
 
+## Verification Checklist
+
+After writing or refactoring code, verify:
+
+1. **Type check**: `pyright` passes
+2. **Format**: `ruff format` applied
+3. **Lint**: `ruff check` passes
+4. **Docstrings**: All public functions have Google-style docstrings
+5. **Error handling**: Specific exceptions, no bare `except:`
+6. **No anti-patterns**:
+   - ❌ `items: list = []` (mutable default)
+   - ❌ `def get_x(self): return self._x` (use `@property`)
+   - ❌ `for i in range(len(items))` (use `enumerate`)
+   - ❌ `x + " " + y` (use `f"{x} {y}"`)
+   - ❌ Functions over 30 lines (extract helpers)
+7. **Function length**: Each function body ≤ 30 lines (excluding docstring)
+
 ## When to go deeper
 
 This skill covers day-to-day Python writing. For specialized topics, read the relevant reference file:
 
-- **`references/advanced-types.md`** — if working with Protocol, TypeVar, generics, overloads, or type narrowing
-- **`references/async-patterns.md`** — if building async services, using TaskGroup, or mixing sync/async
-- **`references/data-model.md`** — if implementing dunder methods, descriptors, or custom containers
-- **`references/testing.md`** — if writing tests, using pytest fixtures, or mocking
-- **`references/class-metaprogramming.md`** — if using `__init_subclass__`, `match`/`case` pattern matching, or `__class_getitem__`
+- **`references/advanced-types.md`** — Protocol, TypeVar, generics, overloads, type narrowing
+- **`references/async-patterns.md`** — Async services, TaskGroup, mixing sync/async
+- **`references/data-model.md`** — Dunder methods, descriptors, custom containers
+- **`references/testing.md`** — Pytest fixtures, mocking, test patterns
+- **`references/class-metaprogramming.md`** — `__init_subclass__`, `match`/`case` pattern matching, `__class_getitem__`
+- **`references/effective-python/`** — Chapter-by-chapter patterns from *Effective Python*: pythonic thinking, lists/dicts, functions, classes, concurrency, error handling, performance, standard library
 
 These are loaded only when needed to keep context lean — the core principles above cover the vast majority of Python code you'll write.

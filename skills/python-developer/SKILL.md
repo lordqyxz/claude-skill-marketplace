@@ -9,7 +9,7 @@ description: |
 
   Use this skill even when the user says "我要实现 X", "帮我开发 Y", "添加 Z 功能" — guide them through structured development rather than writing code directly.
 
-  For code-level implementation (naming, patterns, type hints, async, error handling), delegate to the effective-python skill rather than duplicating those rules here.
+  For code-level implementation (naming, patterns, type hints, async, error handling), delegate to the python-code skill rather than duplicating those rules here.
 ---
 
 # Python Developer — 结构化开发工作流
@@ -21,11 +21,11 @@ description: |
 - **脚本优先，LLM 辅助**：能用脚本完成的分析和验证，绝不浪费 LLM 推理
 - **领域驱动**：先理解业务领域，再设计技术实现
 - **依赖倒置**：核心层定义接口，基础设施层实现接口
-- **委托实现**：代码编写阶段委托 effective-python skill，确保代码质量
+- **委托实现**：代码编写阶段委托 python-code skill，确保代码质量
 
-## 与 effective-python 的分工
+## 与 python-code 的分工
 
-| 职责 | 本 skill (python-developer) | effective-python |
+| 职责 | 本 skill (python-developer) | python-code |
 |------|------------------------------|-------------------|
 | 需求分析 | ✅ | — |
 | 领域建模 | ✅ | — |
@@ -37,7 +37,7 @@ description: |
 | 异步/并发模式 | — | ✅ |
 | 质量检查脚本 | ✅ | — |
 
-**原则**：本 skill 负责"做什么"（需求、架构、领域），effective-python 负责"怎么写"（代码风格、模式、质量）。Phase 4 实现阶段应明确调用 effective-python。
+**原则**：本 skill 负责"做什么"（需求、架构、领域），python-code 负责"怎么写"（代码风格、模式、质量）。Phase 4 实现阶段应明确调用 python-code。
 
 ## 工作流总览
 
@@ -50,7 +50,7 @@ description: |
   |
 [Phase 3] 接口设计         --> LLM (需要设计决策)
   |
-[Phase 4] 并行实现         --> 脚本格式化 + Agent 并行写代码 (委托 effective-python)
+[Phase 4] 并行实现         --> 脚本格式化 + Agent 并行写代码 (委托 python-code)
   |
 [Phase 5] 质量检查与测试   --> 脚本验证 (零 token) + /simplify + /test-cases
   |
@@ -70,7 +70,7 @@ description: |
 | Bug 修复 | Phase 1 澄清行为，Phase 2 定位错误实体，通常不涉及接口变更 |
 | 架构重构 | Phase 1 确认约束，Phase 2 重新审视聚合边界，Phase 3 重新设计接口 |
 | 性能优化 | Phase 1 确认目标，Phase 2 识别瓶颈实体，可能新增缓存/批量接口 |
-| 代码质量优化 | 直接使用 effective-python skill，无需走全流程 |
+| 代码质量优化 | 直接使用 python-code skill，无需走全流程 |
 
 ### 各阶段执行方式
 
@@ -79,7 +79,7 @@ description: |
 | 1. 需求分析 | — | 识别类型 + 澄清需求 | — |
 | 2. DDD 拆分 | `analyze-domain.py` | 设计新模型 | — |
 | 3. 接口设计 | — | 设计接口 + DI | — |
-| 4. 并行实现 | PostToolUse hook | Agent 写代码 | **effective-python** |
+| 4. 并行实现 | PostToolUse hook | Agent 写代码 | **python-code** |
 | 5. 质量检查 | `quality-check.sh` + `verify-architecture.py` | /simplify + /test-cases | simplify, test-cases |
 | 6. 更新文档 | — | — | update-docs |
 
@@ -109,7 +109,7 @@ description: |
 设计核心接口（端口）、依赖注入点、基础设施实现契约。详见 [references/clean-architecture.md](references/clean-architecture.md)。
 
 ### Phase 4: 并行实现
-先写 Core 层（无依赖），再用 Agent 并行写 Infrastructure + Interfaces + Tests。**代码实现委托 effective-python skill**，确保代码风格和模式符合最佳实践。PostToolUse hook 自动格式化。详见 [references/workflow-config.md](references/workflow-config.md)。
+先写 Core 层（无依赖），再用 Agent 并行写 Infrastructure + Interfaces + Tests。**代码实现委托 python-code skill**，确保代码风格和模式符合最佳实践。PostToolUse hook 自动格式化。详见 [references/workflow-config.md](references/workflow-config.md)。
 
 ### Phase 5: 质量检查与测试
 脚本优先：`scripts/quality-check.sh` + `scripts/verify-architecture.py`。通过后 `/simplify` + `/test-cases`。
@@ -129,7 +129,7 @@ description: |
 | interfaces 直接 import infrastructure | 通过 DI 获取抽象接口，不直接依赖具体实现 |
 | 异常类遮蔽内置名 | 使用描述性前缀避免遮蔽（如 `InputFileNotFoundError`） |
 | LLM 做脚本能做的事 | 脚本优先：格式化、lint、类型检查、架构验证用脚本 |
-| 架构师直接写实现代码 | 委托 effective-python skill 处理代码级细节 |
+| 架构师直接写实现代码 | 委托 python-code skill 处理代码级细节 |
 
 ## Verification Checklist
 
@@ -140,7 +140,7 @@ description: |
 - [ ] 核心接口使用 `ABC` + `abstractmethod`，方法使用领域语言
 - [ ] `core/` 不依赖 `infrastructure/` 或 `interfaces/`（`verify-architecture.py` 通过）
 - [ ] `interfaces/` 只依赖 `core/`，通过 DI 获取 infrastructure 实现
-- [ ] 代码实现遵循 effective-python skill 的模式和质量标准
+- [ ] 代码实现遵循 python-code skill 的模式和质量标准
 - [ ] `quality-check.sh` 全部通过
 - [ ] 测试覆盖关键路径
 - [ ] 文档已更新（CLAUDE.md + 项目文档）

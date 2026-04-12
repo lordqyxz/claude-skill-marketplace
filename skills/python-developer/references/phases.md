@@ -260,7 +260,7 @@ src/[package]/
         +-- dependencies.py # DI 配置
 ```
 
-**代码风格**：委托 effective-python skill。关键约束：
+**代码风格**：委托 python-code skill。关键约束：
 - 实体使用 `@dataclass`，值对象使用 `@dataclass(frozen=True)`
 - 领域接口使用 `ABC` + `abstractmethod`
 - 异常类以 `Error` 结尾，避免遮蔽内置异常
@@ -273,7 +273,7 @@ src/[package]/
 
    每个 agent prompt 包含：
    - 要实现的接口定义（从 Phase 3 产出）
-   - 遵循 effective-python skill 的代码风格和模式
+   - 遵循 python-code skill 的代码风格和模式
    - 文件组织规范
 
 ### 实现完成检查
@@ -281,7 +281,7 @@ src/[package]/
 每个文件实现后，确保：
 - `__init__.py` 正确导出公共 API
 - 导入路径正确（相对导入 vs 绝对导入）
-- 代码风格遵循 effective-python skill
+- 代码风格遵循 python-code skill
 
 ---
 
