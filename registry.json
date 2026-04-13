@@ -9,7 +9,7 @@
       "description": "Create new skills, modify and improve existing skills, and measure skill performance with iterative eval loops.",
       "version": "1.0.0",
       "author": "lordqyxz",
-      "path": "skills/skill-creator/SKILL.md",
+      "path": "skill-creator/SKILL.md",
       "tags": ["skill", "creation", "eval", "benchmark", "iteration"],
       "trigger": "Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy."
     },
@@ -19,7 +19,7 @@
       "description": "Write, refactor, and debug Python code following Pythonic best practices from PEP 8, Effective Python, and Fluent Python. Merged with effective-python for comprehensive code-level guidance.",
       "version": "2.0.0",
       "author": "lordqyxz",
-      "path": "skills/python-code/SKILL.md",
+      "path": "python-code/SKILL.md",
       "tags": ["python", "code-quality", "refactoring", "debugging", "pythonic", "style", "effective-python"],
       "trigger": "Use this skill whenever the user writes, reviews, refactors, or debugs Python code, asks about Python patterns, idioms, or style, mentions writing a script/module/package in Python, or requests code that is Pythonic. Also the implementation target for python-developer skill delegation. Applies to all Python 3.10+ code."
     },
@@ -29,7 +29,7 @@
       "description": "Vue 3 SFC development, modification, and review skill. Write and review .vue files following Vue 3 Composition API + script setup best practices.",
       "version": "1.0.0",
       "author": "lordqyxz",
-      "path": "auto_dev_skills/skills/vue3-sfc/SKILL.md",
+      "path": "vue3-sfc/SKILL.md",
       "tags": ["vue", "vue3", "sfc", "composition-api", "frontend", "component"],
       "trigger": "Use when creating, modifying, reviewing, or refactoring .vue files, or any Vue 3 component development task."
     },
@@ -39,7 +39,7 @@
       "description": "Structured Python development workflow: from requirements to delivery using DDD and Clean Architecture. Delegates code implementation to python-code skill.",
       "version": "2.0.0",
       "author": "lordqyxz",
-      "path": "skills/python-developer/SKILL.md",
+      "path": "python-developer/SKILL.md",
       "tags": ["python", "ddd", "clean-architecture", "workflow", "requirements", "domain-modeling"],
       "trigger": "Use when starting new feature development, implementing requirements with DDD/Clean Architecture, requirement analysis, domain modeling, or structured architecture-level refactoring."
     }

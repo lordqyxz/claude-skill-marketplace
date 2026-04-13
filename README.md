@@ -6,10 +6,10 @@ A community-driven marketplace for [Claude Code](https://claude.ai/code) skills.
 
 | Skill | Description | Author | Version |
 |-------|-------------|--------|---------|
-| [skill-creator](auto_dev_skills/skills/skill-creator/SKILL.md) | Create new skills, modify and improve existing skills, and measure skill performance with iterative eval loops. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
-| [python-code](auto_dev_skills/skills/python-code/SKILL.md) | Write, refactor, and debug Python code. PEP 8 + Effective Python + Fluent Python best practices (merged with effective-python). | [@lordqyxz](https://github.com/lordqyxz) | 2.0.0 |
-| [vue3-sfc](auto_dev_skills/skills/vue3-sfc/SKILL.md) | Vue 3 SFC development, modification, and review with Composition API + script setup. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
-| [python-developer](auto_dev_skills/skills/python-developer/SKILL.md) | Structured Python development workflow with DDD and Clean Architecture. Delegates code implementation to python-code. | [@lordqyxz](https://github.com/lordqyxz) | 2.0.0 |
+| [skill-creator](skill-creator/SKILL.md) | Create new skills, modify and improve existing skills, and measure skill performance with iterative eval loops. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
+| [python-code](python-code/SKILL.md) | Write, refactor, and debug Python code. PEP 8 + Effective Python + Fluent Python best practices (merged with effective-python). | [@lordqyxz](https://github.com/lordqyxz) | 2.0.0 |
+| [vue3-sfc](vue3-sfc/SKILL.md) | Vue 3 SFC development, modification, and review with Composition API + script setup. | [@lordqyxz](https://github.com/lordqyxz) | 1.0.0 |
+| [python-developer](python-developer/SKILL.md) | Structured Python development workflow with DDD and Clean Architecture. Delegates code implementation to python-code. | [@lordqyxz](https://github.com/lordqyxz) | 2.0.0 |
 
 ## Install
 
@@ -37,7 +37,7 @@ Then enable skills in your Claude Code settings (`~/.claude/settings.json`):
 Copy a skill folder to your Claude skills directory:
 
 ```bash
-cp -r auto_dev_skills/skills/<skill-name> ~/.claude/skills/<skill-name>
+cp -r <skill-name> ~/.claude/skills/<skill-name>
 ```
 
 ## Submit a Skill
@@ -45,7 +45,7 @@ cp -r auto_dev_skills/skills/<skill-name> ~/.claude/skills/<skill-name>
 Want to add your skill to the marketplace?
 
 1. Fork this repository
-2. Add your skill folder under `auto_dev_skills/skills/`
+2. Add your skill folder under `<skill-name>/`
 3. Add an entry to `registry.json`
 4. Submit a pull request
 
