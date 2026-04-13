@@ -1,0 +1,41 @@
+{
+  "skill_name": "skill-evaluator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我验证 python-code 这个 skill 的结构是否正确",
+      "expected_output": "运行 validate_skill 脚本，输出验证结果，包括名称格式、描述长度、目录结构等检查项",
+      "files": [],
+      "assertions": [
+        "Uses validate_skill script to check the skill structure",
+        "Reports validation results with specific checks (name, description, directory)",
+        "Distinguishes between errors and warnings",
+        "Provides actionable feedback if issues are found"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "我想评估 python-code skill 的质量，看看它的 evals 表现如何",
+      "expected_output": "找到 evals.json，运行 evals，捕获输出，对照 assertions 评分，生成 benchmark 报告",
+      "files": [],
+      "assertions": [
+        "Locates and reads the skill's evals/evals.json",
+        "Runs evals both with and without the skill (baseline comparison)",
+        "Grades results against assertions from evals.json",
+        "Produces benchmark data with pass_rate statistics"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "比较 python-code skill 两次评估运行的结果，看看有没有退步",
+      "expected_output": "加载两次运行结果，比较 pass_rate 变化，识别回归和改进，生成差异报告",
+      "files": [],
+      "assertions": [
+        "Loads results from both evaluation runs",
+        "Compares pass rates per eval between the two runs",
+        "Identifies regressions (pass rate decreased) and improvements (pass rate increased)",
+        "Generates a diff report showing per-eval changes"
+      ]
+    }
+  ]
+}

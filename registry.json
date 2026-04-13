@@ -42,6 +42,16 @@
       "path": "python-developer/SKILL.md",
       "tags": ["python", "ddd", "clean-architecture", "workflow", "requirements", "domain-modeling"],
       "trigger": "Use when starting new feature development, implementing requirements with DDD/Clean Architecture, requirement analysis, domain modeling, or structured architecture-level refactoring."
+    },
+    {
+      "name": "skill-evaluator",
+      "display_name": "Skill Evaluator",
+      "description": "Evaluate and benchmark Claude Code skills. Run structural validation, trigger accuracy tests, quality evals with automated grading, regression tracking, and generate reports.",
+      "version": "1.0.0",
+      "author": "lordqyxz",
+      "path": "skill-evaluator/SKILL.md",
+      "tags": ["skill", "evaluation", "benchmark", "regression", "validation", "ci"],
+      "trigger": "Use when users want to test a skill, benchmark skill performance, compare two skill versions, check skill health, validate skill structure, or run CI-style evals."
     }
   ]
 }
